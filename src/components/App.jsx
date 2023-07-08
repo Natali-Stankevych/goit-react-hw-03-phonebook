@@ -18,6 +18,19 @@ import Filter from './Filter/Filter';
     filter: '',
   };
 
+   componentDidMount() {
+     const contacts = localStorage.getItem('contacts');
+     const parsedContacts = JSON.parse(contacts);
+
+     if (parsedContacts) {
+       this.setState({ contacts: parsedContacts });
+     }
+   }
+
+   componentDidUpdate(_, prevState) {
+     localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+   }
+   
   addContact = contact => {
     const isInContacts = this.state.contacts.some(
       ({ name }) => name.toLowerCase() === contact.name.toLowerCase()
