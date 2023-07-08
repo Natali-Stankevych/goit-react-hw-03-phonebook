@@ -94,6 +94,6 @@ import Filter from './Filter/Filter';
       </Container>
     );
   }
-}
+};
 
 export default App;
